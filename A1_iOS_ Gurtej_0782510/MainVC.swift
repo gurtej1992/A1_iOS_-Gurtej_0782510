@@ -46,8 +46,8 @@ class MainVC: UIViewController {
                 if let pin = arry.first(where: {$0.coordinate.latitude == closest.latitude && $0.coordinate.longitude == closest.longitude}){
                     if let index = arrCoordinates.firstIndex(where: {$0.latitude == closest.latitude && $0.longitude == closest.longitude}){
                         arrCoordinates.remove(at: index)
-                            mapView.removeAnnotation(pin)
-                            mapView.removeOverlay(polygen)
+                        mapView.removeAnnotation(pin)
+                        mapView.removeOverlay(polygen)
                     }
                 }
                 print("Pin to close")
@@ -70,6 +70,59 @@ class MainVC: UIViewController {
         pin.coordinate = coordinates
         mapView.addAnnotation(pin)
     }
+    @IBAction func handleDirection(_ sender: Any) {
+        if arrCoordinates.count == 3{
+            mapView.removeOverlay(polygen)
+            let request = MKDirections.Request()
+            request.source = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: arrCoordinates[0].latitude, longitude: arrCoordinates[0].longitude), addressDictionary: nil))
+            request.destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: arrCoordinates[1].latitude, longitude: arrCoordinates[1].longitude), addressDictionary: nil))
+            request.requestsAlternateRoutes = true
+            request.transportType = .automobile
+
+            let directions = MKDirections(request: request)
+
+            directions.calculate { [unowned self] response, error in
+                guard let unwrappedResponse = response else { return }
+
+                if let route = unwrappedResponse.routes.first {
+                    self.mapView.addOverlay(route.polyline)
+                    self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+                }
+            }
+            let request2 = MKDirections.Request()
+            request2.source = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: arrCoordinates[1].latitude, longitude: arrCoordinates[1].longitude), addressDictionary: nil))
+            request2.destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: arrCoordinates[2].latitude, longitude: arrCoordinates[2].longitude), addressDictionary: nil))
+            request2.requestsAlternateRoutes = true
+            request2.transportType = .automobile
+            
+            let directions2 = MKDirections(request: request2)
+            
+            directions2.calculate { [unowned self] response, error in
+                guard let unwrappedResponse = response else { return }
+                
+                if let route = unwrappedResponse.routes.first {
+                    self.mapView.addOverlay(route.polyline)
+                    self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+                }
+            }
+            let request3 = MKDirections.Request()
+            request3.source = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: arrCoordinates[2].latitude, longitude: arrCoordinates[2].longitude), addressDictionary: nil))
+            request3.destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: arrCoordinates[0].latitude, longitude: arrCoordinates[0].longitude), addressDictionary: nil))
+            request3.requestsAlternateRoutes = true
+            request3.transportType = .automobile
+            
+            let directions3 = MKDirections(request: request3)
+            
+            directions3.calculate { [unowned self] response, error in
+                guard let unwrappedResponse = response else { return }
+                
+                if let route = unwrappedResponse.routes.first {
+                    self.mapView.addOverlay(route.polyline)
+                    self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+                }
+            }
+        }
+    }
 }
 extension MainVC : CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -89,6 +142,11 @@ extension MainVC : MKMapViewDelegate{
             poly.fillColor = .red
             poly.alpha = 0.5
             return poly
+        }
+        else if overlay is MKPolyline{
+            let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
+            renderer.strokeColor = UIColor.blue
+            return renderer
         }
         return MKOverlayRenderer(overlay: overlay)
     }
