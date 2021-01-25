@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		B71E395225BF3EDB00CACD09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71E395125BF3EDB00CACD09 /* AppDelegate.swift */; };
 		B71E395425BF3EDB00CACD09 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71E395325BF3EDB00CACD09 /* SceneDelegate.swift */; };
-		B71E395625BF3EDB00CACD09 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71E395525BF3EDB00CACD09 /* ViewController.swift */; };
+		B71E395625BF3EDB00CACD09 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71E395525BF3EDB00CACD09 /* MainVC.swift */; };
 		B71E395925BF3EDB00CACD09 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B71E395725BF3EDB00CACD09 /* Main.storyboard */; };
 		B71E395B25BF3EE700CACD09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B71E395A25BF3EE700CACD09 /* Assets.xcassets */; };
 		B71E395E25BF3EE700CACD09 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B71E395C25BF3EE700CACD09 /* LaunchScreen.storyboard */; };
@@ -19,7 +19,7 @@
 		B71E394E25BF3EDB00CACD09 /* A1_iOS_ Gurtej_0782510.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "A1_iOS_ Gurtej_0782510.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B71E395125BF3EDB00CACD09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B71E395325BF3EDB00CACD09 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B71E395525BF3EDB00CACD09 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B71E395525BF3EDB00CACD09 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		B71E395825BF3EDB00CACD09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B71E395A25BF3EE700CACD09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B71E395D25BF3EE700CACD09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,7 +58,7 @@
 			children = (
 				B71E395125BF3EDB00CACD09 /* AppDelegate.swift */,
 				B71E395325BF3EDB00CACD09 /* SceneDelegate.swift */,
-				B71E395525BF3EDB00CACD09 /* ViewController.swift */,
+				B71E395525BF3EDB00CACD09 /* MainVC.swift */,
 				B71E395725BF3EDB00CACD09 /* Main.storyboard */,
 				B71E395A25BF3EE700CACD09 /* Assets.xcassets */,
 				B71E395C25BF3EE700CACD09 /* LaunchScreen.storyboard */,
@@ -137,7 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B71E395625BF3EDB00CACD09 /* ViewController.swift in Sources */,
+				B71E395625BF3EDB00CACD09 /* MainVC.swift in Sources */,
 				B71E395225BF3EDB00CACD09 /* AppDelegate.swift in Sources */,
 				B71E395425BF3EDB00CACD09 /* SceneDelegate.swift in Sources */,
 			);
@@ -296,7 +296,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tejcorp.A1-iOS--Gurtej-0782510";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -315,7 +315,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tejcorp.A1-iOS--Gurtej-0782510";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
